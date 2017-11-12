@@ -10,11 +10,12 @@ export class AppComponent {
   constructor(private serverConnector: ServerConnector){
     this.getListFromServer();
   }
-  title: string = "start";
+  title: string = "let'Scroll";
+  text: string = "טוען...";
 
   getListFromServer(){
     this.serverConnector.getData("http://localhost:8080/api/book/content?name=shemot").subscribe((data)=>{
-      this.title = data;
+      this.text = data;
     })
   }
 }

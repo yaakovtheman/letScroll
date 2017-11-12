@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {ServerConnector} from "./utils/server-connector.service";
 import {HttpModule} from "@angular/http";
+import {WelcomePageModule} from "./welcome-page/welcome-page.module";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import {HttpModule} from "@angular/http";
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    WelcomePageModule
   ],
   providers: [ServerConnector],
   bootstrap: [AppComponent]

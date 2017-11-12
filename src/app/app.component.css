@@ -1,0 +1,10 @@
+.text-box{
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+  max-height: 300px;
+  overflow-y: scroll;
+  background-color: white;
+  font-size: x-large;
+  font-weight: bold;
+}
