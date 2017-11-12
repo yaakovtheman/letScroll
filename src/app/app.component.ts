@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ServerConnector} from "./utils/server-connector.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'letScroll';
+  constructor(private serverConnector: ServerConnector){
+    this.getListFromServer();
+  }
+  title: string = "start";
+
+  getListFromServer(){
+    this.serverConnector.getData("http://localhost:8080/api/book/content?name=shemot").subscribe((data)=>{
+      this.title = data;
+    })
+  }
 }
