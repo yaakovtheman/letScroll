@@ -1,0 +1,20 @@
+.text-box{
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+  max-height: 300px;
+  overflow-y: scroll;
+  background-color: white;
+  font-size: x-large;
+  font-weight: bold;
+}
+.hi-light{
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+  max-height: 50px;
+  background-color: #6da716;
+  opacity: 0.3;
+  position: absolute;
+}
+
