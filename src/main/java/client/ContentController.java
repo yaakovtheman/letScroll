@@ -20,6 +20,7 @@ public class ContentController {
   @Autowired
   SefariaConsumer consumer;
 
+  @CrossOrigin()
   @RequestMapping("/api/list")
   public List<BookName> getBookList(){
     List<BookName> list = new ArrayList<>();

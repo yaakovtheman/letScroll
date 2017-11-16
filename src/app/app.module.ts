@@ -12,6 +12,10 @@ import {CreatePageComponent} from "./create-page/create-page.component";
 import {LecturePageComponent} from "./lecture-page/lecture-page.component";
 import {LecturePageModule} from "./lecture-page/lecture-page.module";
 import {CreatePageModule} from "./create-page/create-page.module";
+import {InitAppService} from "./utils/services/init-app.service";
+import {AppCacheService} from "./utils/services/app-cache.service";
+import {SocketHandlerService} from "./utils/services/socket-handler.service";
+import { ViewportModule } from 'angular2-viewport';
 
 const appRoutes: Routes = [
   { path: 'lecture', component: LecturePageComponent },
@@ -40,7 +44,7 @@ const appRoutes: Routes = [
     LecturePageModule,
     CreatePageModule
   ],
-  providers: [ServerConnector],
+  providers: [ServerConnector,InitAppService,AppCacheService,SocketHandlerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

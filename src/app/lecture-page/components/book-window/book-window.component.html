@@ -1,7 +1,8 @@
-<div class="text-box">
-  <span *ngFor="let p of bookText" id="p{{p.id}}"> {{p.text}} </span>
+<div id="myBox" class="text-box">
+  <span *ngFor="let p of bookText" id="p{{p.id}}" >{{p.id}} {{p.text}} </span>
 <!--<div class="hi-light">test</div>-->
 </div>
 <div>
   <input placeholder="0-{{bookText.length}}" type="number" (keyup)="goToIndex($event.target.value)">
+  <span>is disp = {{detect}}  </span>
 </div>

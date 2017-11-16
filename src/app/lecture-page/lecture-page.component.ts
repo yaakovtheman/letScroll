@@ -24,12 +24,12 @@ export class LecturePageComponent implements OnInit {
     })
   }
   nextPage():void{
-    this.index++;
     this.lines.length = 0;
     this.bookTextArray[this.index].forEach((p,index)=>{
       this.lines.push(new BookLine(p,index));
     });
     this.text = this.lines;
+    this.index++;
   }
   ngOnInit() {
   }
