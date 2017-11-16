@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Subscription} from "rxjs";
+import {JoinService} from "./services/join.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-welcome-page',
@@ -6,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome-page.component.css']
 })
 export class WelcomePageComponent implements OnInit {
+  subscription:Subscription;
 
-  constructor() { }
+  constructor(private  join : JoinService,private  router : Router) { }
 
+  joinClass(id : number, name : string){
+    this.join.joinLecture(id,name);
+  }
   ngOnInit() {
+    this.subscription = this.join.navItemSource
+      .subscribe((isLec) => {
+      if(isLec){
+        this.goToLectureUrl();
+      }
+      })
+  }
+  goToLectureUrl(){
+    this.router.navigateByUrl('/lecture');
   }
 
 }

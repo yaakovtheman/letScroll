@@ -1,4 +1,8 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-body{
-  background-color: #d0cecf;
+html {
+  background: url("assets/img/book.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }

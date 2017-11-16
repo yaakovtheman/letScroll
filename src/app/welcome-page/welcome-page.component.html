@@ -1,4 +1,9 @@
 <div class="login-window">
-  shalom
-  <div>hi</div>
+  <label>id:</label>
+  <input #idInput type="number">
+  <br>
+  <label>name:</label>
+  <input #nameInput type="text">
+  <br>
+  <button type="submit" (click)="joinClass(idInput.value,nameInput.value)">submit</button>
 </div>
