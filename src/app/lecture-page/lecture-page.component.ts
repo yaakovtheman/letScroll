@@ -18,7 +18,7 @@ export class LecturePageComponent implements OnInit {
   lines : BookLine[]= [];
 
   getListFromServer(){
-    this.serverConnector.getData("http://localhost:8080/api/book/content?name=shmot").subscribe((data)=>{
+    this.serverConnector.getData("http://192.168.43.27:8080/api/book/content?name=shmot").subscribe((data)=>{
       this.bookTextArray = data;
       this.nextPage();
     })
