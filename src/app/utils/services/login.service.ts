@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {ServerConnector} from "../../utils/services/server-connector.service";
-import {AppCacheService} from "../../utils/services/app-cache.service";
+import {ServerConnector} from "./server-connector.service";
+import {AppCacheService} from "./app-cache.service";
 import {Router} from '@angular/router';
 import {BehaviorSubject} from "rxjs";
 

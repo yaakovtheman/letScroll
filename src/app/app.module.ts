@@ -16,7 +16,7 @@ import {InitAppService} from "./utils/services/init-app.service";
 import {AppCacheService} from "./utils/services/app-cache.service";
 import {SocketHandlerService} from "./utils/services/socket-handler.service";
 import { ViewportModule } from 'angular2-viewport';
-import {JoinService} from "./welcome-page/services/join.service";
+import {JoinService} from "./utils/services/login.service";
 
 const appRoutes: Routes = [
   { path: 'lecture', component: LecturePageComponent },
