@@ -19,6 +19,7 @@ import { ViewportModule } from 'angular2-viewport';
 import {JoinService} from "./utils/services/login.service";
 import {TeacherPageComponent} from "./teacher-page/teacher-page.component";
 import {TeacherPageModule} from "./teacher-page/teacher-page.module";
+import { ScrollSpyModule } from 'ng2-scrollspy';
 
 const appRoutes: Routes = [
   { path: 'lecture', component: LecturePageComponent },
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     WelcomePageModule,
     LecturePageModule,
     TeacherPageModule,
-    CreatePageModule
+    CreatePageModule,
+    ScrollSpyModule.forRoot()
   ],
   providers: [ServerConnector,InitAppService,AppCacheService,SocketHandlerService,JoinService],
   bootstrap: [AppComponent]

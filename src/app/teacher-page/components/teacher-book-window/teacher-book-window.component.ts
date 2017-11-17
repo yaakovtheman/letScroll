@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {BookLine} from "../../../utils/classes/BookLine";
 import * as $ from 'jquery';
+
 // import * as Waypoint from 'C:/Scroll/letScroll/node_modules/waypoints/lib/noframework.waypoints.js'
 
 
@@ -10,6 +11,10 @@ import * as $ from 'jquery';
   styleUrls: ['./teacher-book-window.component.css']
 })
 export class TeacherBookWindowComponent implements OnInit {
+
+
+
+
   get bookText(): BookLine[] {
     return this._bookText;
   }
@@ -26,13 +31,7 @@ export class TeacherBookWindowComponent implements OnInit {
   detect : any;
   detect2 : number;
   constructor() { }
-  goToIndex(num:any){
-    var elements = document.getElementById("p"+num)
-      if(elements){
-        elements.scrollIntoView({behavior: 'smooth'});
-      }
-    this.detect =$("#myBox").scrollTop(); //this.checkMe($("#p17"),$("#myBox"))
-  }
+
   ngOnInit() {
     // var waypoint = new Waypoint({
     //   element: $('#p17'),
@@ -40,6 +39,12 @@ export class TeacherBookWindowComponent implements OnInit {
     //     alert('Scrolled to waypoint!'+direction)
     //   }
     // })
+  
+    var self = this;
+    $("#myBox").scroll((t)=> {
+      // self.checkMe()
+      console.log("j" + t);
+    })
   }
 
   checkMe(e,p): boolean{
@@ -52,6 +57,8 @@ export class TeacherBookWindowComponent implements OnInit {
       !(r.top > z.bottom || r.bottom < z.top ||
       r.left > z.right || r.right < z.left);
   }
+
+
   handlerFunction(){
     // this.detect = $('#myBox').children(":visible").text()
     var offset = $("#p14").offset().top - $("#myBox").scrollTop();
@@ -64,4 +71,12 @@ export class TeacherBookWindowComponent implements OnInit {
     return true;
   }
 
+
+  enter() {
+    console.log('Track scroll enter is working!');
+  }
+ 
+  leave() {
+    console.log('Track scroll leave is working too!');
+  }
 }

@@ -19,7 +19,8 @@ export class ServerConnector{
     console.log(JSON.stringify(body));
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(url,JSON.stringify(body), options).catch(this.handleError);
+    return this.http.post(url,JSON.stringify(body), options).map(
+      response => response.json()).catch(this.handleError);
   }
 
   private handleError(error : any): Observable<any>{

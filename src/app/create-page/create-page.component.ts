@@ -3,6 +3,8 @@ import { InitAppService } from '../utils/services/init-app.service';
 import { ServerConnector } from '../utils/services/server-connector.service';
 import { JoinService } from '../utils/services/login.service';
 import { BookHeader } from '../utils/classes/BookHeader';
+import { Subscription } from 'rxjs/Subscription';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-page',
@@ -15,17 +17,23 @@ export class CreatePageComponent implements OnInit {
   bookHeaders: any[]; 
   lecturerName: string;
   subject: string;
-  
+  subscription: Subscription
 
   constructor(private serverConnector: ServerConnector,
               private initAppService: InitAppService,
-            private joinService: JoinService) { }
+            private joinService: JoinService,
+          private router: Router) { }
 
   ngOnInit() {
     this.serverConnector.getData(this.initAppService.serverUrl + 'list').subscribe((data)=>{
       this.bookHeaders = data;
       this.selectedBook = this.bookHeaders[0];
     });
+    this.subscription = this.joinService.navItemSource
+    .subscribe((isLec) => {
+      if(isLec)
+      this.router.navigateByUrl('/teacher');
+    })
   }
 
   onInput($event) {
