@@ -7,6 +7,13 @@
   background-size: cover;
 }
 .top-bar{
-  background-color: #fdfbff !important;
+  position: absolute;
+  background-color: white !important;
   width: 100%;
+}
+.logo-img{
+  padding: 10px;
+  width: 60px;
+  float: left;
+  padding-left: 10px;
 }
