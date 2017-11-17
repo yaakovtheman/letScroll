@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { InitAppService } from '../utils/services/init-app.service';
 import { ServerConnector } from '../utils/services/server-connector.service';
+import { JoinService } from '../utils/services/login.service';
+import { BookHeader } from '../utils/classes/BookHeader';
 
 @Component({
   selector: 'app-create-page',
@@ -9,17 +11,18 @@ import { ServerConnector } from '../utils/services/server-connector.service';
 })
 export class CreatePageComponent implements OnInit {
 
-  selectedBook: any;
+  selectedBook: BookHeader;
   bookHeaders: any[]; 
   lecturerName: string;
   subject: string;
   
 
   constructor(private serverConnector: ServerConnector,
-              private InitAppService: InitAppService) { }
+              private initAppService: InitAppService,
+            private joinService: JoinService) { }
 
   ngOnInit() {
-    this.serverConnector.getData(this.InitAppService.serverUrl).subscribe((data)=>{
+    this.serverConnector.getData(this.initAppService.serverUrl + 'list').subscribe((data)=>{
       this.bookHeaders = data;
       this.selectedBook = this.bookHeaders[0];
     });
@@ -33,6 +36,7 @@ export class CreatePageComponent implements OnInit {
 
   onSubmit() {
     console.log(this.lecturerName + ' ' + this.subject + ' ' + this.selectedBook.bookId);
+    this.joinService.createLecture({subject: this.subject, bookId: this.selectedBook.bookId, masterNick: this.lecturerName});
   }
 
 }

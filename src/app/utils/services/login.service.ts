@@ -22,4 +22,13 @@ export class JoinService {
       })
   }
 
+  createLecture(info: any){
+    let path = this.serverPath + '/api/class/create';
+      this.serverConnector.postData(path, info).subscribe((data)=>{
+        console.log(data);
+        this.cache.currentLecture = data;
+        this.navItemSource.next(true);
+      })
+  }
+
 }
