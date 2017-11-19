@@ -1,4 +1,4 @@
-import {Http, URLSearchParams} from "@angular/http";
+import {Http, URLSearchParams, RequestOptions, Headers} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 @Injectable()
@@ -13,6 +13,14 @@ export class ServerConnector{
       return this.http.get(url).map(
         response => response.json()).catch(this.handleError);
     }
+  }
+
+  public postData(url: string, body: any): Observable<any> {
+    console.log(JSON.stringify(body));
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(url,JSON.stringify(body), options).map(
+      response => response.json()).catch(this.handleError);
   }
 
   private handleError(error : any): Observable<any>{

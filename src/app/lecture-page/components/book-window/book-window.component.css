@@ -4,9 +4,10 @@
   margin: auto;
   max-height: 300px;
   overflow-y: scroll;
-  background-color: white;
   font-size: x-large;
   font-weight: bold;
+  background-color: white;
+
 }
 .hi-light{
   width: 90%;

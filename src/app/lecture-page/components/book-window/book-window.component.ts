@@ -1,6 +1,8 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {BookLine} from "../../../utils/classes/BookLine";
 import * as $ from 'jquery';
+// import * as Waypoint from 'C:/Scroll/letScroll/node_modules/waypoints/lib/noframework.waypoints.js'
+
 
 @Component({
   selector: 'app-book-window',
@@ -8,18 +10,38 @@ import * as $ from 'jquery';
   styleUrls: ['./book-window.component.css']
 })
 export class BookWindowComponent implements OnInit {
+  get bookText(): BookLine[] {
+    return this._bookText;
+  }
+
+  private _bookText :BookLine[];
+  lineAmount : number=0;
+
   @Input()
-  bookText :BookLine;
+  set bookText(value: BookLine[]) {
+    this._bookText = value;
+    if(value)
+    this.lineAmount = value.length
+  }
   detect : any;
   detect2 : number;
   constructor() { }
   goToIndex(num:any){
-    var elements = document.getElementById("p"+num).scrollIntoView();
-    this.detect = this.checkMe($("#p17"),$("#myBox"))
+    var elements = document.getElementById("p"+num)
+      if(elements){
+        elements.scrollIntoView({behavior: 'smooth'});
+      }
+    this.detect =$("#myBox").scrollTop(); //this.checkMe($("#p17"),$("#myBox"))
   }
   ngOnInit() {
-;
+    // var waypoint = new Waypoint({
+    //   element: $('#p17'),
+    //   handler: function(direction) {
+    //     alert('Scrolled to waypoint!'+direction)
+    //   }
+    // })
   }
+
   checkMe(e,p): boolean{
     var z = p.getBoundingClientRect();
     var r = e.getBoundingClientRect();

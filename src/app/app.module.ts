@@ -16,11 +16,16 @@ import {InitAppService} from "./utils/services/init-app.service";
 import {AppCacheService} from "./utils/services/app-cache.service";
 import {SocketHandlerService} from "./utils/services/socket-handler.service";
 import { ViewportModule } from 'angular2-viewport';
+import {JoinService} from "./utils/services/login.service";
+import {TeacherPageComponent} from "./teacher-page/teacher-page.component";
+import {TeacherPageModule} from "./teacher-page/teacher-page.module";
+import { ScrollSpyModule } from 'ng2-scrollspy';
 
 const appRoutes: Routes = [
   { path: 'lecture', component: LecturePageComponent },
   { path: 'create',component: CreatePageComponent },
   { path: 'welcome',component: WelcomePageComponent },
+  { path: 'teacher',component: TeacherPageComponent },
   { path: '',
     redirectTo: '/welcome',
     pathMatch: 'full'
@@ -42,9 +47,11 @@ const appRoutes: Routes = [
     HttpModule,
     WelcomePageModule,
     LecturePageModule,
-    CreatePageModule
+    TeacherPageModule,
+    CreatePageModule,
+    ScrollSpyModule.forRoot()
   ],
-  providers: [ServerConnector,InitAppService,AppCacheService,SocketHandlerService],
+  providers: [ServerConnector,InitAppService,AppCacheService,SocketHandlerService,JoinService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ServerConnector} from "../utils/services/server-connector.service";
 import {BookLine} from "../utils/classes/BookLine";
+import {AppCacheService} from "../utils/services/app-cache.service";
 
 @Component({
   selector: 'app-lecture-page',
@@ -9,7 +10,7 @@ import {BookLine} from "../utils/classes/BookLine";
 })
 export class LecturePageComponent implements OnInit {
 
-  constructor(private serverConnector: ServerConnector){
+  constructor(private serverConnector: ServerConnector,private  appCacheService:AppCacheService){
     this.getListFromServer();
   }
   bookTextArray : string[][];
@@ -18,10 +19,8 @@ export class LecturePageComponent implements OnInit {
   lines : BookLine[]= [];
 
   getListFromServer(){
-    this.serverConnector.getData("http://localhost:8080/api/book/content?name=shmot").subscribe((data)=>{
-      this.bookTextArray = data;
+      this.bookTextArray = this.appCacheService.currentLecture.bookContent;
       this.nextPage();
-    })
   }
   nextPage():void{
     this.lines.length = 0;

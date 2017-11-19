@@ -1,3 +1,15 @@
 .create-win{
-  background-color: aliceblue;
+  background-color: #eeeeee;
 }
+
+label {
+  float: left;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+select {
+  float: left;
+  margin-left: -92px;  
+}
+

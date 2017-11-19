@@ -1,32 +1,36 @@
-<div class="col-lg-4 col-md-offset-4 create-win">
+<div  style="padding:20px;" class="col-lg-4 col-md-offset-4 create-win">
+
+  <!-- <app-tree-page [data]=bookHeaders></app-tree-page> -->
+
+
+
   <form>
+
+      <div class="form-group" *ngIf="bookHeaders && selectedBook" >
+        <label for="selectBook">Select a Book</label>
+        <br>
+          <select [(ngModel)]="selectedBook.bookId" (input)="onInput($event)" name="selectBook">
+              <option *ngFor="let book of bookHeaders" value= {{book.bookId}}>{{book.hebrewName}}</option>
+            </select>
+          </div>
+    <br>
+
   <div class="form-group">
-    <label for="exampleFormControlInput1">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <label for="LecturerName">Lecturer Name</label>
+    <input [(ngModel)]="lecturerName" type="text" class="form-control" name="LecturerName" placeholder="Your Name">
   </div>
+
+  <br>
+
   <div class="form-group">
-    <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
+      <label for="Subject">Lecture Subject</label>
+      <input [(ngModel)]="subject" type="text" class="form-control" name="Subject" placeholder="Your Lecture Subject">
+    </div>
+
+    <br>
+    <br>
+    <div class="form-group">
+        <input type="submit" (click)="onSubmit()" class="form-control btn-success" id="btn" value="Go On!">
+      </div>
 </form>
 </div>
